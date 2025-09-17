@@ -1,0 +1,143 @@
+/* -------------------- Timer Page Styles -------------------- */
+
+/* Timer container */
+.timer-container {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin: 60px 0;
+  transition: filter 0.5s ease, opacity 0.5s ease; /* Smooth transition for pause effect */
+}
+
+/* Style for when the timer is paused */
+.timer-container.paused {
+  filter: grayscale(80%);
+  opacity: 0.7;
+}
+
+/* SVG Circle Background */
+.circle-bg {
+  fill: none;
+  stroke: rgba(255,255,255,0.1);
+  stroke-width: 18;
+}
+
+/* Neon Progress Circle */
+.circle-progress {
+  fill: none;
+  stroke: url(#grad);
+  stroke-width: 18;
+  stroke-linecap: round;
+  stroke-dasharray: 785;
+  stroke-dashoffset: 785;
+  filter: drop-shadow(0 0 10px #0ff) drop-shadow(0 0 20px #ff00ff);
+  transition: stroke-dashoffset 1s ease-out;
+}
+
+/* Timer digits */
+.time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 56px;
+  font-weight: 700;
+  color: #0ff;
+  text-shadow: 0 0 8px #0ff, 0 0 16px #ff00ff, 0 0 24px #0ff;
+  transition: all 0.3s ease;
+}
+
+/* Animation for when the digits change */
+.time.pop {
+  animation: digitPop 0.3s ease-out;
+}
+
+@keyframes digitPop {
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.8;
+    text-shadow: 0 0 12px #0ff, 0 0 24px #ff00ff;
+  }
+}
+
+/* Flash effect in last 10 seconds */
+.time.flash {
+  animation: neonFlash 1s infinite alternate;
+}
+
+@keyframes neonFlash {
+  0% { color: #0ff; text-shadow: 0 0 8px #0ff, 0 0 16px #ff00ff; }
+  100% { color: #ff00ff; text-shadow: 0 0 12px #ff00ff, 0 0 24px #0ff; }
+}
+
+/* Popup */
+.done-popup .popup-content {
+  padding: 40px 60px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 16px;
+  border: 2px solid #0ff;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: #0ff;
+  box-shadow: 0 0 20px #0ff, 0 0 40px #ff00ff;
+  backdrop-filter: blur(8px);
+}
+
+/* Container for control buttons */
+.controls-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Start Timer Button */
+.start-timer-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #0ff, #ff00ff);
+  border-radius: 12px;
+  font-weight: 600;
+  color: #000;
+  box-shadow: 0 0 15px #0ff, 0 0 25px #ff00ff;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.start-timer-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #0ff, 0 0 40px #ff00ff;
+}
+
+/* Reset Button */
+.secondary-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: transparent;
+  border: 2px solid #ff00ff;
+  color: #ff00ff;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 0 15px #ff00ff;
+  transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background: rgba(255, 0, 255, 0.1);
+  box-shadow: 0 0 25px #ff00ff;
+}
+
+/* Popup button */
+.done-popup button {
+  margin-top: 25px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #0ff, #ff00ff);
+  color: #000;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #0ff, 0 0 25px #ff00ff;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+.done-popup button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #0ff, 0 0 40px #ff00ff;
+}
